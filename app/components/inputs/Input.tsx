@@ -33,6 +33,7 @@ const Input: React.FC<InputProps> = ({
         />
       )}
       <input
+        type={type}
         id={id}
         disabled={disabled}
         {...register(id, { required })}
