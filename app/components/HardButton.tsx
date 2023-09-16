@@ -1,14 +1,17 @@
 "use client";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { SafeUser } from "../types";
+import useFavorite from "../hooks/useFavorite";
 
 interface HardButtonProps {
   currentUser?: SafeUser | null;
   listingId: string;
 }
 const HardButton: React.FC<HardButtonProps> = ({ currentUser, listingId }) => {
-  const hasFavorited = false;
-  const toggleFavorite = () => {};
+  const { hasFavorited, toggleFavorite } = useFavorite({
+    listingId,
+    currentUser,
+  });
   return (
     <div
       onClick={toggleFavorite}
