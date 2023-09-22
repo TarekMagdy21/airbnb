@@ -27,8 +27,7 @@ const RentModal = () => {
   const router = useRouter();
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("Step", step);
-  const {
+   const {
     register,
     handleSubmit,
     setValue,

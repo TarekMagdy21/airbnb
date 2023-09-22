@@ -3,11 +3,11 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { SafeUser } from "../types";
 import useFavorite from "../hooks/useFavorite";
 
-interface HardButtonProps {
+interface HeartButtonProps {
   currentUser?: SafeUser | null;
   listingId: string;
 }
-const HardButton: React.FC<HardButtonProps> = ({ currentUser, listingId }) => {
+const HeartButton: React.FC<HeartButtonProps> = ({ currentUser, listingId }) => {
   const { hasFavorited, toggleFavorite } = useFavorite({
     listingId,
     currentUser,
@@ -29,4 +29,4 @@ const HardButton: React.FC<HardButtonProps> = ({ currentUser, listingId }) => {
   );
 };
 
-export default HardButton;
+export default HeartButton;
