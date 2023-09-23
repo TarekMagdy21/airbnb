@@ -6,15 +6,17 @@ interface IParams {
   authorId?: string;
 }
 
-export default async function getReservations(params: IParams) {
+export default async function getReservations(
+  params: IParams
+) {
   try {
     const { listingId, userId, authorId } = params;
 
     const query: any = {};
-
+        
     if (listingId) {
       query.listingId = listingId;
-    }
+    };
 
     if (userId) {
       query.userId = userId;
@@ -27,14 +29,15 @@ export default async function getReservations(params: IParams) {
     const reservations = await prisma.reservation.findMany({
       where: query,
       include: {
-        listing: true,
+        listing: true
       },
       orderBy: {
-        createdAt: "desc",
-      },
+        createdAt: 'desc'
+      }
     });
 
-    const safeReservations = reservations.map((reservation) => ({
+    const safeReservations = reservations.map(
+      (reservation) => ({
       ...reservation,
       createdAt: reservation.createdAt.toISOString(),
       startDate: reservation.startDate.toISOString(),
@@ -47,6 +50,6 @@ export default async function getReservations(params: IParams) {
 
     return safeReservations;
   } catch (error: any) {
-    throw new Error("Something went wrong");
+    throw new Error(error);
   }
 }
